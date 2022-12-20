@@ -243,6 +243,14 @@ namespace CourseProject
                             string type = Convert.ToString(dataGridView1.Rows[i].Cells[4].Value);
                             string deleteSubQuery;
                             string deleteQuery = $"delete from Room where ID_Room = {id}";
+                            string deleteService = $"delete from GetService where ID_Checkin in (Select ID_Checkin from Check_in where ID_Room = {id})";
+                            string deleteCheckin = $"delete from Check_in where ID_Room = {id}";
+
+                            SqlCommand cmdService = new SqlCommand(deleteService, hotel.GetConnection());
+                            SqlCommand cmdCheckIn = new SqlCommand(deleteCheckin, hotel.GetConnection());
+                            cmdService.ExecuteNonQuery();
+                            cmdCheckIn.ExecuteNonQuery();
+
                             if(type == "Multi_bed")
                             {
                                 deleteSubQuery = $"delete from Multi_bed where ID_Room = {id}"; 
@@ -253,8 +261,9 @@ namespace CourseProject
                             }
                             SqlCommand cmdQuery = new SqlCommand(deleteQuery, hotel.GetConnection());
                             SqlCommand cmdSubQuery = new SqlCommand(deleteSubQuery, hotel.GetConnection());
-                            cmdQuery.ExecuteNonQuery();
                             cmdSubQuery.ExecuteNonQuery();
+                            cmdQuery.ExecuteNonQuery();
+                            
                             break;
                         }
                     case RowState.Modified:

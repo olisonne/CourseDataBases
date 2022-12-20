@@ -93,11 +93,9 @@ namespace CourseProject
 
             string searchString;
 
-            if (comboBox_Type.SelectedItem.ToString() == "Multi_bed"){
+            if (comboBox_Type.SelectedItem.ToString() == "Multi_bed") {
 
-                searchString = $"Select *, (select TotalN_of_Bed from Multi_bed where ID_Room = Room.ID_Room), COALESCE((select(TotalN_of_Bed - count(*)) from(Select Multi_bed.ID_Room as ID, TotalN_of_Bed From Check_in inner join Multi_bed on Multi_bed.ID_Room = Check_in.ID_Room where ID_Checkin not in (Select ID_Checkin from Check_in inner join Room on Room.ID_Room = Check_in.ID_Room " +
-                    $"where Date_Departure < @checkin or Date_CheckIn > @departure)) as T group by ID, TotalN_of_Bed), (select TotalN_of_Bed from Multi_bed where Multi_bed.ID_Room = Room.ID_Room)) as FreePlaces from Room " +
-                    $"where Type = 'Multi_bed' and ID_Room not in (select ID from(Select Multi_bed.ID_Room as ID, TotalN_of_Bed From Check_in inner join Multi_bed on Multi_bed.ID_Room = Check_in.ID_Room where ID_Checkin not in (Select ID_Checkin from Check_in inner join Room on Room.ID_Room = Check_in.ID_Room where Date_Departure < @checkin or Date_CheckIn > @departure)) as T group by ID, TotalN_of_Bed having(TotalN_of_Bed - count(*)) <= 0)";
+                searchString = $"Select *, (select TotalN_of_Bed from Multi_bed where ID_Room = Room.ID_Room), COALESCE((select(TotalN_of_Bed - count(*)) from(Select Multi_bed.ID_Room as ID, TotalN_of_Bed From Check_in inner join Multi_bed on Multi_bed.ID_Room = Check_in.ID_Room where Check_in.ID_Room = Room.ID_Room and  ID_Checkin not in (Select ID_Checkin from Check_in inner join Room on Room.ID_Room = Check_in.ID_Room where Date_Departure < @checkin or Date_CheckIn > @departure)) as T group by ID, TotalN_of_Bed),   (select TotalN_of_Bed from Multi_bed where Multi_bed.ID_Room = Room.ID_Room)) as FreePlaces from Room  where Type = 'Multi_bed' and ID_Room not in   (select ID from(Select Multi_bed.ID_Room as ID, TotalN_of_Bed From Check_in inner join Multi_bed on Multi_bed.ID_Room = Check_in.ID_Room where ID_Checkin not in   (Select ID_Checkin from Check_in inner join Room R on R.ID_Room = Check_in.ID_Room where Date_Departure<@checkin or Date_CheckIn > @departure)) as T group by ID, TotalN_of_Bed having(TotalN_of_Bed - count(*)) <= 0)";
             }
             else
             {

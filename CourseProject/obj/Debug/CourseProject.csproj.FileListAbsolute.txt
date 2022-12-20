@@ -18,3 +18,7 @@ D:\Учеба\Course\CourseProject\CourseProject\obj\Debug\CourseProject.MainMen
 D:\Учеба\Course\CourseProject\CourseProject\obj\Debug\CourseProject.AddService.resources
 D:\Учеба\Course\CourseProject\CourseProject\obj\Debug\CourseProject.BookingCancel.resources
 D:\Учеба\Course\CourseProject\CourseProject\obj\Debug\CourseProject.Statistics.resources
+D:\Учеба\Course\CourseProject\CourseProject\bin\Debug\CourseProject.exe.manifest
+D:\Учеба\Course\CourseProject\CourseProject\bin\Debug\CourseProject.application
+D:\Учеба\Course\CourseProject\CourseProject\obj\Debug\CourseProject.exe.manifest
+D:\Учеба\Course\CourseProject\CourseProject\obj\Debug\CourseProject.application

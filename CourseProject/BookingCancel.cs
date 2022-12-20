@@ -35,9 +35,9 @@ namespace CourseProject
             dataGridView1.Columns.Add("Date_CheckIn", "checkin"); //1
             dataGridView1.Columns.Add("Date_Departure", "departure"); //2
             dataGridView1.Columns.Add("Payment", "payment"); //3
-            dataGridView1.Columns.Add("ID_Room", "ID_Client"); //3
-            dataGridView1.Columns.Add("N_of_people", "people");
-            dataGridView1.Columns.Add("FreePlaces", "free_places");
+            dataGridView1.Columns.Add("ID_Room", "ID_Room"); //3
+            dataGridView1.Columns.Add("ID_Client", "ID_Client");
+            dataGridView1.Columns.Add("N_of_people", "N_of_people");
             dataGridView1.Columns.Add("IsNew", String.Empty);
         }
 
